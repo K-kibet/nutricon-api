@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Post = require('../models/Post');
 const Service = require('../models/Service');
 const {verifyTokenAndAdmin} = require('./verifyToken');
 
@@ -37,7 +38,6 @@ router.delete('/:id', verifyTokenAndAdmin, async (req, res) => {
     }
 })
 
-
 //GET A SERVICE
 router.get('/find/:id', async (req, res) => {
     try{
@@ -50,7 +50,7 @@ router.get('/find/:id', async (req, res) => {
 
 
 
-//Get ALL SERVICES
+//Get ALL POSTS
 router.get('/', async (req, res) => {
     const qNew = req.query.new;
     const qCategory = req.query.category;
@@ -73,5 +73,6 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 })
+
 
 module.exports = router;
